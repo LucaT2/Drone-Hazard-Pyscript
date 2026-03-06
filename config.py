@@ -4,12 +4,12 @@ import threading
 import os
 import random
 # --- APP SETTINGS ---
-STREAM_URL = "rtmp://192.168.1.131/live/key" 
+STREAM_URL = "rtmp://172.20.10.4/live/key" 
 WEIGHTS_PATH = "weights/best.engine"
 JAVA_SERVER_IP = "192.168.1.134" 
 JAVA_SERVER_PORT = "8080"
 SPRING_SERVER_URL = f"http://{JAVA_SERVER_IP }:{JAVA_SERVER_PORT }/api/hazards/detect"
-SPRING_SERVER_URL = "http://localhost:8080/api/fod/detect"
+ECHO_SERVER_URL = "http://localhost:8080/api/fod/detect"
 ## java url = f"http://{JAVA_SERVER_IP }:{JAVA_SERVER_PORT }/api/hazards/detect" 
 ##localhost = "http://localhost:8080/api/fod/detect"
 # --- DETECTION SETTINGS ---

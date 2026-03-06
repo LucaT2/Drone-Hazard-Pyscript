@@ -1,7 +1,7 @@
 from ultralytics import YOLO
 
 # 1. Load your existing model
-model = YOLO("best.pt")
+model = YOLO("./weights/best_combined_datasets.pt")
 
 # 2. Export to TensorRT (.engine) format
 # device=0 uses your GTX 1650

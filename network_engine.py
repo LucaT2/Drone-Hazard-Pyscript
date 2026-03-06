@@ -7,15 +7,15 @@ def send_to_java_async(frame, label, confidence, x, y, url):
     thread = threading.Thread(target=_send_request, args=(frame, label, confidence, x, y, url))
     thread.start()
 
-def _send_request(frame, label, confidence, x, y, url):
+def _send_request(frame, label, confidence, x:float, y:float, url):
     """The actual POST request logic."""
     _, img_encoded = cv2.imencode('.jpg', frame)
     files = {'image': ('detection.jpg', img_encoded.tobytes(), 'image/jpeg')}
     data = {
         'label': label,
         'confidence': f"{confidence:.2f}",
-        'coord_x': int(x),
-        'coord_y': int(y)
+        'coord_x': x,
+        'coord_y': y
     }
     try:
         # Timeout ensures the script doesn't hang if the Java server is down

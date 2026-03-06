@@ -27,7 +27,7 @@ lk_params = dict(winSize=(15, 15), maxLevel=4,
 reader = config.LiveStreamCapture(config.STREAM_URL)
 
 fps_claimed = reader.cap.get(cv2.CAP_PROP_FPS)
-print(f"📹 Stream Header FPS: {fps_claimed}")
+#print(f"📹 Stream Header FPS: {fps_claimed}")
 
 tracked_points = np.array([]) 
 tracked_dimensions = [] 
@@ -38,6 +38,7 @@ prev_time = time.time()
 fps_start_time = time.time()
 received_frame_count = 0
 print("📡 Processing Live Feed...")
+
 
 try:
     while True:
@@ -81,7 +82,7 @@ try:
                           yaw_drone=reader.yaw, pitch_camera=reader.pitch)
                     
                     send_to_java_async(server_frame, obj.category.name, 
-                                       obj.score.value, coordonate_x, coordonate_y, config.SPRING_SERVER_URL)
+                                       obj.score.value, coordonate_x, coordonate_y, config.ECHO_SERVER_URL)
 
                 new_pts.append([[cx, cy]])
                 new_dims.append((w, h))
@@ -96,6 +97,7 @@ try:
             new_points, status, _ = cv2.calcOpticalFlowPyrLK(old_gray, gray, tracked_points, None, **lk_params)
             
             good_new, new_dims, new_clss = [], [], []
+            
             for i, (new_pt, stat) in enumerate(zip(new_points, status)):
                 if stat[0] == 1:
                     good_new.append([[new_pt[0][0], new_pt[0][1]]])
