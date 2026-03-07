@@ -20,6 +20,9 @@ def _send_request(frame, label, confidence, x:float, y:float, url):
     try:
         # Timeout ensures the script doesn't hang if the Java server is down
         response = requests.post(url, files=files, data=data, timeout=1.0)
+        print(response.text)
+
+  # Log the server's response for debugging
         if response.status_code == 200:
             print(f"✅ Transmitted: {label}")
     except Exception as e:

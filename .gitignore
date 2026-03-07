@@ -1,3 +1,6 @@
 /.venv
 /__pycache__
+/Test_Videos
 receive_FOD.jpg
+drone_raw_capture.mp4
+\Test_Videos
